@@ -77,7 +77,7 @@ namespace OpenNosClientLauncher
 
             #endregion
 
-            textBox_server.Text = _cfg["Form"]["LastServer"];
+            textBox_server.Text = !string.IsNullOrEmpty(_cfg["Form"]["LastServer"]) ? _cfg["Form"]["LastServer"] : "localhost";
 
             try
             {
