@@ -42,6 +42,7 @@ namespace OpenNosClientLauncher.Helper
             _d.Add(Language.En, new Dictionary<string, string>
             {
                 {"WRONGDIR", "This launcher needs to be placed in the directory of the official Nostale Client!"},
+                {"ERROR", "Error"},
                 {"SERVER", "Server"},
                 {"LOGINAS", "Login as"},
                 {"CHANGEAUTOLOGIN", "Change AutoLogin"},
@@ -60,11 +61,23 @@ namespace OpenNosClientLauncher.Helper
                 {"NOSTALEUPDATES", "For the official Nostale Client are updates available.\nAfter this update nosyx may not function correctly. You'll find more details on our Git-page.\n\nDo you want to update now?"},
                 {"NOSTALEUPDATESGO", "The official Nostale Client will launch now, to install the updates.\nAs it has finished, close it with the red 'Quit'-Button.\nThis launcher will reappear automatic!"},
                 {"UPDATESAVAILABLE", "Updates available"},
+                {"NOSTALESETTINGS", "Nostale Settings"},
+                {"GRAPHICMODE", "Graphic Mode"},
+                {"SEARCHUPDATES", "Check for updates"},
+                {"CLIENTLAUNCHER", "Client Launcher"},
+                {"OFFICIALNOSTALE", "Off. Nostale Client"},
+                {"ABOUT", "About"},
+                {"ONLYONEINSTANCE", "There can only be one instance of Nostale running."},
+                {"SRCNOTFOUND", "The Nostale-Client-File can not be found. Please copy this launcher into the Nostale directory."},
+                {"UNAUTHORIZEDACCESSEXCEPTION", "Unauthorized Access! Nostale can only be started once."},
+                {"WIN32EXCEPTION", "The Nostale.dat file is perhaps invalid or you have not the right to open it. Try starting this launcher as administrator."},
                 {"", ""},
+                
             });
             _d.Add(Language.De, new Dictionary<string, string>
             {
                 {"WRONGDIR", "Der Launcher muss sich im Verzeichnis von Nostale befinden."},
+                {"ERROR", "Fehler"},
                 {"SERVER", "Server"},
                 {"LOGINAS", "Anmelden als"},
                 {"CHANGEAUTOLOGIN", "AutoLogin ändern"},
@@ -83,6 +96,16 @@ namespace OpenNosClientLauncher.Helper
                 {"NOSTALEUPDATES", "Für den offiziellen Nostale Client sind Updates verfügbar.\nNach diesem Update funktioniert nosyx möglicherweise nur noch eingeschränkt. Details findest du auf unserer Git-Seite.\n\nMöchtest du diese Updates jetzt installieren?"},
                 {"NOSTALEUPDATESGO", "Der offizielle Nostale Client wird nun gestartet, um die Updates zu installieren.\nSobald dieser abgeschlossen hat, schließe ihn wieder (mit einem Klick auf das rote 'Quit').\nDieser Launcher wird danach automatisch wieder erscheinen!"},
                 {"UPDATESAVAILABLE", "Updates verfügbar"},
+                {"NOSTALESETTINGS", "Nostale Einstellungen"},
+                {"GRAPHICMODE", "Grafik Modus"},
+                {"SEARCHUPDATES", "Nach Updates suchen"},
+                {"CLIENTLAUNCHER", "Client Launcher"},
+                {"OFFICIALNOSTALE", "Off. Nostale Client"},
+                {"ABOUT", "Über"},
+                {"ONLYONEINSTANCE", "Es kann nur eine Instanz von Nostale gestartet sein."},
+                {"SRCNOTFOUND", "Die Nostale-Client-Datei konnte nicht gefunden werden. Bitte kopiere diesen Launcher ins Nostale-Verzeichnis."},
+                {"UNAUTHORIZEDACCESSEXCEPTION", "Unauthorisierter Zugriff! Nostale kann nur einmal gestartet werden."},
+                {"WIN32EXCEPTION", "Die Nostale.dat ist wahrscheinlich ungültig oder du besitzt keine Berechtigung, sie zu öffnen. Führe dieses Programm als Administrator aus."},
                 {"", ""},
             }); 
             _d.Add(Language.Fr, new Dictionary<string, string>
