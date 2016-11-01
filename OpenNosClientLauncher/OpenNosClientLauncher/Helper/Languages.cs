@@ -26,7 +26,7 @@ namespace OpenNosClientLauncher.Helper
             _d = new Dictionary<Language, Dictionary<string, string>>();
             init();
         }
-        
+
         public string T(string s)
         {
             if (_d[Lng].ContainsKey(s))
@@ -72,7 +72,7 @@ namespace OpenNosClientLauncher.Helper
                 {"UNAUTHORIZEDACCESSEXCEPTION", "Unauthorized Access! Nostale can only be started once."},
                 {"WIN32EXCEPTION", "The Nostale.dat file is perhaps invalid or you have not the right to open it. Try starting this launcher as administrator."},
                 {"", ""},
-                
+
             });
             _d.Add(Language.De, new Dictionary<string, string>
             {
@@ -107,14 +107,45 @@ namespace OpenNosClientLauncher.Helper
                 {"UNAUTHORIZEDACCESSEXCEPTION", "Unauthorisierter Zugriff! Nostale kann nur einmal gestartet werden."},
                 {"WIN32EXCEPTION", "Die Nostale.dat ist wahrscheinlich ungültig oder du besitzt keine Berechtigung, sie zu öffnen. Führe dieses Programm als Administrator aus."},
                 {"", ""},
-            }); 
+            });
             _d.Add(Language.Fr, new Dictionary<string, string>
             {
                 {"", ""},
             });
             _d.Add(Language.It, new Dictionary<string, string>
             {
+                {"WRONGDIR", "Questo launcher necessita di essere spostato nella cartella del Nostale Ufficiale!"},
+                {"ERROR", "Errore"},
+                {"SERVER", "Server"},
+                {"LOGINAS", "Effettua l'accesso come"},
+                {"CHANGEAUTOLOGIN", "Cambia impostazioni dell'AutoLogin"},
+                {"SETTINGS", "Impostazioni"},
+                {"STARTGAME", "Start"},
+                {"QUIT", "Esci"},
+                {"AUTOLOGININFO", "Dopo che il Client di Nostale è stato aperto, l'AutoLogin invierà automaticamente i dati di accesso al processo di Nostale; per questo tu non avrai bisogno di inserire le tue credenziali di volta in volta. In dei pc un po' datati hai la possibilità di aumentare il tempo di ritardo dopo il quale verranno inseriti i dati automaticamente. Presta attenzione a non cambiare la finestra che si apre oppure l'AutoLogin non funzionerà."},
+                {"USERNAME", "Username"},
+                {"PASSWORD", "Password"},
+                {"AUTOLOGINENCRYPTED", "Stai tranquillo! I tuoi dati sono criptati durante il salvataggio."},
+                {"DELAY", "Ritardo espresso in millisecondi"},
+                {"SAVE", "Salva"},
+                {"OFF", "Disabilita"},
+                {"BACK", "Indietro"},
+                {"LAUNCHERUPDATES", "Ci sono degli aggiornamenti disponibili per questo launcher.\nQuesti potrebbero risolvere problemi o bug presenti nel gioco. Noi raccomandiamo di installare questi aggiornamenti. Per questo controlla immediatamente la nostra Repo su GitHub."},
+                {"NOSTALEUPDATES", "Ci sono degli aggiornamenti disponibili per il Client ufficiale di Nostale.\nDopo questi aggiornamenti il launcher nosyx potrebbe non funzionare correttamente. Puoi trovare ulteriori dettagli nella nostra pagina su GitHub.\n\nVuoi proseguire con l'aggiornamento?"},
+                {"NOSTALEUPDATESGO", "Il Client ufficiale di Nostale si aprirà adesso per installare gli aggiornamenti.\nAppena l'aggiornamento sarà finito chiudi premendo il tasto rosso 'Quit'.\nQuesto launcher verrà automaticamente riaperto!"},
+                {"UPDATESAVAILABLE", "Aggiornamenti disponibili."},
+                {"NOSTALESETTINGS", "Impostazioni di Nostale"},
+                {"GRAPHICMODE", "Impostazioni grafiche"},
+                {"SEARCHUPDATES", "Controlla gli aggiornamenti"},
+                {"CLIENTLAUNCHER", "Client Launcher"},
+                {"OFFICIALNOSTALE", "Client Uff. Nostale"},
+                {"ABOUT", "Informazioni"},
+                {"ONLYONEINSTANCE", "Non puoi avere due processi di Nostale contemporaneamente."},
+                {"SRCNOTFOUND", "Il client di Nostale non è stato trovato. Per favore copia questo launcher nella cartella di Nostale."},
+                {"UNAUTHORIZEDACCESSEXCEPTION", "Accesso non autorizzato. Nostale può essere eseguito una volta sola."},
+                {"WIN32EXCEPTION", "Il file Nostale.dat è invalido oppure tu non hai i diritti per poterlo aprire. Riprova ad aprire il Client come Amministratore."},
                 {"", ""},
+
             });
             _d.Add(Language.Pl, new Dictionary<string, string>
             {
@@ -137,7 +168,7 @@ namespace OpenNosClientLauncher.Helper
                 {"", ""},
             });
 
-            
+
         }
     }
 }
