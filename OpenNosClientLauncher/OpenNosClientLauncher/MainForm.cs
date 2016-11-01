@@ -224,6 +224,12 @@ namespace OpenNosClientLauncher
                             {
                                 password = SimpleStringCipher.Decrypt(_cfg["Autologin"]["Password"], "OPENNOSROCKXXX");
                             }
+                            catch (FormatException exception)
+                            {
+                                // Password in config was false formated/encrypted
+                                // Reset
+                                _cfg["Autologin"]["Password"] = "";
+                            }
                             catch (Exception exception)
                             {
                                 MessageBox.Show(exception.ToString(), _l.T("ERROR"), MessageBoxButtons.OK, MessageBoxIcon.Error);
