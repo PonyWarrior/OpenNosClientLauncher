@@ -1,10 +1,10 @@
 # OpenNosClientLauncher
-Launcher for connecting to OpenNos Server
+Launcher for connecting to OpenNos Server (or any other server)
 
 
 Directly download the **compiled binary**: (copy into Nostale-Folder)
 
-http://opennos.genyx.eu/dl/OpenNosClientLauncher.zip
+https://raw.githubusercontent.com/genyx/OpenNosClientLauncher/master/OpenNosClientLauncher.zip
 
 
 # About
@@ -13,7 +13,9 @@ This tool does not manipulate the game files. It works via 'Config.ini' but crea
 
 It also comes with "Autologin" which is a feature that stores your credentials and automatically sends these keystrokes to the game client, so you wont have to enter it each time.
 
-You have to copy this launcher into your Nostale-Folder to run it.
+# Installation
+
+You just have to copy this launcher into your Nostale-Folder and run it.
 
 # Screenshots
 
