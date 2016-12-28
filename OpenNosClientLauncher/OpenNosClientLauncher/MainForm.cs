@@ -19,17 +19,21 @@ namespace OpenNosClientLauncher
         private readonly LanguageSystem _l;
         private const string RemoteVersion = "https://raw.githubusercontent.com/genyx/OpenNosClientLauncher/master/OpenNosClientLauncher/OpenNosClientLauncher/Properties/AssemblyInfo.cs";
         private Point _mouseposition;
-
-
-
         private string _logInAs = "-";
+
+        public sealed override Size MinimumSize
+        {
+            get { return base.MinimumSize; }
+            set { base.MinimumSize = value; }
+        }
+
+
 
         #region Initiation
         public MainForm()
         {
             InitializeComponent();
 
-            // ReSharper disable once VirtualMemberCallInContructor
             Size = MinimumSize;
             panel_mainmenu.Dock = panel_autologin.Dock = panel_settings.Dock = DockStyle.Fill;
             panel_autologin.Visible = panel_settings.Visible = false;
@@ -41,70 +45,80 @@ namespace OpenNosClientLauncher
         private void LoginForm_Load(object sender, EventArgs e)
         {
             // Loading Config
+            try
+            {
+                #region Apply Language
 
-            // Language
-            string lng = _cfg["Form"]["Language"];
-            if (!string.IsNullOrEmpty(lng) && lng.Length == 2)
-            {
-                LangChange(lng);
-            }
-            else
-            {
-                // Check language.dat
+                string lng = _cfg["Form"]["Language"];
+                if (!string.IsNullOrEmpty(lng) && lng.Length == 2)
+                {
+                    LangChange(lng);
+                }
+                else
+                {
+                    // Check language.dat
+                    try
+                    {
+                        using (FileStream fileStream = File.OpenRead(Path.Combine(Environment.CurrentDirectory, "Language.dat")))
+                        {
+                            LangChange(((LanguageSystem.Language)fileStream.ReadByte()).ToString());
+                        }
+                    }
+                    catch (Exception)
+                    {
+                        // ignored
+                        LangChange("en");
+                    }
+                }
+                
+                #endregion
+
+                #region Load in Settings
+
+                radioButton_Gl.Checked = _cfg["Graph"]["Mode"] == "GL";
+
+                checkBox_update_launcher.Checked = _cfg["Update"]["launcher"] == "1";
+                checkBox_update_nostale.Checked = _cfg["Update"]["nostale"] == "1";
+
+                label_copyright.Text = label_copyright.Text.Replace("{v}",
+                    Assembly.GetExecutingAssembly().GetName().Version.ToString());
+
+                textBox_server.Text = !string.IsNullOrEmpty(_cfg["Form"]["LastServer"]) ? _cfg["Form"]["LastServer"] : "localhost";
+
                 try
                 {
-                    using (FileStream fileStream = File.OpenRead(Path.Combine(Environment.CurrentDirectory, "Language.dat")))
-                    {
-                        LangChange(((LanguageSystem.Language)fileStream.ReadByte()).ToString());
-                    }
+                    if (_cfg["Autologin"]["Enabled"] == "1")
+                        _logInAs = textBox_username.Text = _cfg["Autologin"]["Username"];
+
+                    int tmp = Convert.ToInt32(_cfg["Autologin"]["Delay"]);
+                    if (tmp < 750)
+                        tmp = 1000;
+                    else if (tmp > 10000)
+                        tmp = 10000;
+                    numericUpDown_delay.Value = tmp;
                 }
                 catch (Exception)
                 {
                     // ignored
-                    LangChange("en");
                 }
+
+                #endregion
+
+
+                // Wrong dir?
+                if (!File.Exists("NostaleX.dat") && !File.Exists("Nostale.dat") && !File.Exists("Nostale.exe"))
+                {
+                    MessageBox.Show(_l.T("WRONGDIR"), _l.T("ERROR"), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    Application.Exit();
+                }
+
+                timer_UpdateCheck.Start();
             }
-
-            #region Settings
-
-            radioButton_Gl.Checked = _cfg["Graph"]["Mode"] == "GL";
-
-            checkBox_update_launcher.Checked = _cfg["Update"]["launcher"] == "1";
-            checkBox_update_nostale.Checked = _cfg["Update"]["nostale"] == "1";
-
-            label_copyright.Text = label_copyright.Text.Replace("{v}",
-                Assembly.GetExecutingAssembly().GetName().Version.ToString());
-
-            #endregion
-
-            textBox_server.Text = !string.IsNullOrEmpty(_cfg["Form"]["LastServer"]) ? _cfg["Form"]["LastServer"] : "localhost";
-
-            try
+            catch (Exception ex)
             {
-                if (_cfg["Autologin"]["Enabled"] == "1")
-                    _logInAs = textBox_username.Text = _cfg["Autologin"]["Username"];
-
-                int tmp = Convert.ToInt32(_cfg["Autologin"]["Delay"]);
-                if (tmp < 750)
-                    tmp = 1000;
-                else if (tmp > 10000)
-                    tmp = 10000;
-                numericUpDown_delay.Value = tmp;
-            }
-            catch (Exception)
-            {
-                // ignored
-            }
-
-
-            // Wrong dir?
-            if (!File.Exists("NostaleX.dat") && !File.Exists("Nostale.dat") && !File.Exists("Nostale.exe"))
-            {
-                MessageBox.Show(_l.T("WRONGDIR"), _l.T("ERROR"), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Unexpected error: " + ex, _l.T("ERROR"), MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Application.Exit();
             }
-
-            timer_UpdateCheck.Start();
         }
 
         private void timer_UpdateCheck_Tick(object sender, EventArgs e)

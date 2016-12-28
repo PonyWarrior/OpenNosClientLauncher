@@ -19,12 +19,13 @@ namespace OpenNosClientLauncher.Helper
         }
 
         public Language Lng { get; set; }
+
         private readonly Dictionary<Language, Dictionary<string, string>> _d;
 
         public LanguageSystem()
         {
             _d = new Dictionary<Language, Dictionary<string, string>>();
-            init();
+            InitAllStrings();
         }
 
         public string T(string s)
@@ -37,7 +38,7 @@ namespace OpenNosClientLauncher.Helper
         }
 
 
-        private void init()
+        private void InitAllStrings()
         {
             _d.Add(Language.En, new Dictionary<string, string>
             {
