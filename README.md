@@ -25,3 +25,7 @@ You just have to copy this launcher into your Nostale-Folder and run it.
 
 ![settings](https://raw.githubusercontent.com/genyx/OpenNosClientLauncher/master/screenshots/3.PNG)
 
+# Technic
+
+If someone is interested in how the whole magic works, take a look in [here](https://github.com/genyx/OpenNosClientLauncher/blob/master/OpenNosClientLauncher/OpenNosClientLauncher/Helper/NosModder.cs)
+
